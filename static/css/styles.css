@@ -1,0 +1,17 @@
+body {
+  background-color: #f5f7fb;
+}
+
+.stat-card {
+  border-radius: 0.75rem;
+}
+
+.navbar-brand {
+  letter-spacing: 0.02em;
+}
+
+.table > :not(caption) > * > * {
+  padding-top: 0.85rem;
+  padding-bottom: 0.85rem;
+}
+

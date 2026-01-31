@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}Appointments · Hospital Appointments{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <div>
+    <h4 class="mb-0">All Appointments</h4>
+    <p class="text-muted small mb-0">Most recent appointments appear first.</p>
+  </div>
+  <a href="{% url 'appointments:book_appointment' %}" class="btn btn-primary">
+    + New Appointment
+  </a>
+</div>
+
+<div class="card shadow-sm border-0">
+  <div class="card-body p-0">
+    <div class="table-responsive">
+      <table class="table mb-0 align-middle">
+        <thead class="table-light">
+          <tr>
+            <th>Patient</th>
+            <th>Doctor</th>
+            <th>Date &amp; Time</th>
+            <th>Reason</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for appt in appointments %}
+            <tr>
+              <td>
+                <div class="fw-semibold">{{ appt.patient.full_name }}</div>
+                <div class="small text-muted">{{ appt.patient.phone }}</div>
+              </td>
+              <td>
+                <div class="fw-semibold">{{ appt.doctor.name }}</div>
+                <div class="small text-muted">{{ appt.doctor.specialty }}</div>
+              </td>
+              <td>
+                <div>{{ appt.date }}</div>
+                <div class="small text-muted">{{ appt.time }}</div>
+              </td>
+              <td class="small">{{ appt.reason|default:"—" }}</td>
+              <td>
+                <span class="badge bg-secondary-subtle text-secondary text-capitalize">
+                  {{ appt.status }}
+                </span>
+              </td>
+            </tr>
+          {% empty %}
+            <tr>
+              <td colspan="5" class="text-center text-muted py-4">
+                No appointments found. <a href="{% url 'appointments:book_appointment' %}">Book the first one</a>.
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}
+

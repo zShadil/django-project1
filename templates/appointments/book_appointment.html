@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}Book Appointment · Hospital Appointments{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-8">
+    <div class="card shadow-sm border-0">
+      <div class="card-header bg-white border-0">
+        <h4 class="mb-0">Book a New Appointment</h4>
+        <p class="text-muted small mb-0">Enter patient details and appointment information.</p>
+      </div>
+      <div class="card-body">
+        <form method="post" novalidate>
+          {% csrf_token %}
+          <h6 class="text-uppercase text-muted mb-3">Patient Information</h6>
+          <div class="row g-3">
+            {% for field in patient_form %}
+              <div class="col-md-6">
+                <label class="form-label">{{ field.label }}</label>
+                {{ field }}
+                {% if field.errors %}
+                  <div class="text-danger small">{{ field.errors|striptags }}</div>
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+
+          <hr class="my-4">
+
+          <h6 class="text-uppercase text-muted mb-3">Appointment Details</h6>
+          <div class="row g-3">
+            {% for field in appointment_form %}
+              <div class="col-md-6">
+                <label class="form-label">{{ field.label }}</label>
+                {{ field }}
+                {% if field.errors %}
+                  <div class="text-danger small">{{ field.errors|striptags }}</div>
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+
+          <div class="mt-4 d-flex justify-content-between">
+            <a href="{% url 'appointments:appointment_list' %}" class="btn btn-outline-secondary">
+              View All Appointments
+            </a>
+            <button type="submit" class="btn btn-primary px-4">
+              Save Appointment
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
