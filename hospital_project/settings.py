@@ -5,9 +5,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = "replace-this-with-a-secure-random-key"
 
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS: list[str] = []
+ALLOWED_HOSTS = ["django-projects1-upk5.onrender.com", ".onrender.com"]
+
+
+
 
 INSTALLED_APPS = [
     "django.contrib.admin",
