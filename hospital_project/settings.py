@@ -5,12 +5,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = "replace-this-with-a-secure-random-key"
 
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ["django-projects1-upk5.onrender.com", ".onrender.com"]
-
-
-
+ALLOWED_HOSTS = [
+    "django-projects1-upk5.onrender.com",
+    "django-projects1-upk5.onrender.com:10000",  # only if port appears in error
+    ".onrender.com",
+    "localhost",
+    "127.0.0.1",
+]
 
 INSTALLED_APPS = [
     "django.contrib.admin",

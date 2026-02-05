@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual environment
+.venv/
+
+# Django
+db.sqlite3
+*.log
+.env
+
+# Static files for deployment
+staticfiles/
+
+# macOS
+.DS_Store
